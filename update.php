@@ -13,9 +13,9 @@
         $name=$_POST['name'];
         $email=$_POST['email'];
         $password=$_POST['password'];
-        $image=$_FILES['image'];
+        $image=$_FILES['image']['name'];
 
-        $sql="update `crud` set id=$id,name='$name',email='$email',password='$password',
+        $sql="update `sign-up` set id=$id,name='$name',email='$email',password='$password',
         image='$image' where id=$id";
 
         $result=mysqli_query($con,$sql);
@@ -45,7 +45,7 @@
 <body>
 
     <div class="container">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Enter your name:</label>
                 <input type="text" class="form-control" placeholder="Enter your name:" name="name" autocomplete="off" value=<?php echo $name?>>
